@@ -1,12 +1,21 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Veux-tu être ma Valentine ? 💕</title>
+    <title>Veux-tu être ma Valentine ? 💕</title>☆*: .｡. o(≧▽≦)o .｡.:*☆☆*: .｡. o(≧▽≦)o .｡.:*☆☆*: .｡. o(≧▽≦)o .｡.:*☆☆*: .｡. o(≧▽≦)o .｡.:*☆☆*: .｡. o(≧▽≦)o .｡.:*☆
     
     <style>
+        .ya{
+             
+            width: 400px;
+            height: 300px;
+            margin: 0 auto 2rem;
+            animation: bounce 1s infinite;
+            border-radius: 15px;
+
+        }
+        
         /* Reset et styles de base */
         * {
             margin: 0;
@@ -14,12 +23,174 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .bisou{
+        
+        
+        
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes confetti-fall {
+            0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        @keyframes pulse-heart {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+        
+        /* Animation d'explosion de cœurs */
+        @keyframes heartExplosion {
+            0% { transform: translate(0, 0) scale(0.8); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(0.2); opacity: 0; }
+        }
+        
+        /* Popup nom */
+        
+        
+        .heart-red { color: #ff6b6b; }
+        .heart-pink { color: #ff9ff3; }
+        .heart-purple { color: #a29bfe; }
+        .heart-yellow { color: #ffeaa7; }
+        
+        /* Particules d'explosion (cœurs) */
+        .explosion-heart {
+            position: fixed;
+            font-size: 1.5rem;
+            pointer-events: none;
+            z-index: 100;
+            animation: heartExplosion 3s forwards;
+            --tx: 0px;
+            --ty: 0px;
+        }
+        
+        /* Animation cœur qui bat */
+        .heart-beat {
+            animation: pulse-heart 1s infinite;
+            display: inline-block;
+        }
+        
+        /* Confettis */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 40;
+        }
+        
+        /* Notification musique */
+        .music-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            z-index: 45;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            align-items: center;
+            gap: 10px;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .music-notification .note-icon {
+            font-size: 1.2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2rem;
+                padding: 0 1rem;
+            }
+            
+            .valentine-button {
+                font-size: 1rem;
+                padding: 0.75rem 1.5rem;
+                min-width: 120px;
+            }
+            
+            .success-title {
+                font-size: 2rem;
+            }
+            
+            .success-gif {
+                width: 10rem;
+                height: 10rem;
+            }
+            
+            .floating-heart {
+                font-size: 1.5rem;
+            }
+            
+            .music-control {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .explosion-heart {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.5rem;
+            }
+            
+            .popup-container {
+                padding: 1rem;
+            }
+            
+            .popup-title {
+                font-size: 1.25rem;
+            }
+            
+            .success-title {
+                font-size: 1.75rem;
+            }
+            
+            .floating-heart {
+                font-size: 1.2rem;
+            }
+            
+            .explosion-heart {
+                font-size: 1rem;
+            }
+        }
+    .bisou{
             border-radius: 50px;i
             height: 90PX;
             width: 200PX;
         }
             .yann{
+
                 color: #A31621;
            width: 20ch;
            font-family: monospace;
@@ -34,8 +205,17 @@
 }
 
 .yann {
-  font-size: 0.3rem;              /* taille finale */
-  animation: zoomOut 3s ease-out forwards;
+    font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #fbbf24, #f472b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: pulse 1s infinite;
+            text-align: center;
+  font-size: 1rem;              /* taille finale */
+  animation: zoomOut 5s ease-out forwards;
   opacity: 0.1;
 }
 
@@ -433,11 +613,17 @@
     <!-- Popup nom -->
     <div id="namePopup" class="popup-overlay">
         <div class="popup-container">
-            <h2 class="yann">by yann uchiwa😎</h2>
+            <h2 class="yann">BONNE SAINT VALENTIN <br>les amies </h2>
             <input type="text" id="userName" placeholder="Ton prénom s'il te plaît..." class="name-input">
             <button id="startButton" class="start-button">C'est parti !</button>
+
+            
+
         </div>
+       
+
     </div>
+    
     <img src="cc.gif" class="bisou">
     
        
@@ -455,8 +641,7 @@
     
     <!-- Écran de succès -->
     <div id="success" class="success-overlay">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzduem94YmlveGU0dGhvdm5veXpwaTdicmNtYjFhaTdka2EwYjVocCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/auGFCmg6rM0eI/giphy.gif" class="bisou">
-        <h2 class="success-title">Woooww Superrr ! ❤️‍🩹</h2>
+        <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MHJ5MmlzcjNhbHdsdjkzcXU3aGZiaGdrenJsaDVjank0M2pubnRhaSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/43EVPgzy7OSbu/giphy.gif" class="ya"> <h2 class="success-title">FORNIDABLE BAE ❤️‍🩹</h2>
         <p class="success-message">Merci <span id="finalName"></span> ! merci tu viens d embellir mon fevrier  ❤️(❁´◡`❁)</p>
     </div>
     <!-- Contrôle musique -->
@@ -474,7 +659,7 @@
     <div id="heartsContainer"></div>
     
     <!-- Audio pour la musique de fond -->
-    <audio id="backgroundMusic" loop  src="dave.mpeg">
+    <audio id="backgroundMusic" loop  src="indila.mpeg">
         <!-- Vous pouvez remplacer cette URL par votre propre musique -->
         <source src="https://assets.mixkit.co/music/preview/mixkit-valentine-serenade-445.mp3" type="audio/mpeg">
         <source src="https://assets.mixkit.co/music/preview/mixkit-valentine-serenade-445.wav" type="audio/wav">
@@ -500,6 +685,7 @@
         const success = document.getElementById('success');
         const backgroundMusic = document.getElementById('backgroundMusic');
         const successSound = document.getElementById('successSound');
+        const explosionSound = document.getElementById('explosionSound');
         const musicControl = document.getElementById('musicControl');
         const musicNotification = document.getElementById('musicNotification');
         const heartsContainer = document.getElementById('heartsContainer');
@@ -525,30 +711,52 @@
             // Bouton de démarrage
             startButton.addEventListener('click', startValentine);
             
-            // Événements pour le bouton Non
-            nonBtn.addEventListener('mouseenter', moveNonButton);
-            nonBtn.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                moveNonButton();
-                growOuiButton();
-            });
+            // Événements pour le bouton Non : EXPLOSION DE CŒURS au clic !
             nonBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                moveNonButton();
+                explodeNonButton();
                 growOuiButton();
                 nonClickCount++;
                 
                 // Après 3 clics sur Non, changer le texte
+                if (nonClickCount >= 3) {
+                    nonBtn.innerHTML = "S'il te plaît 😭🥹";
+                    
+                    nonBtn.style.backgroundColor = '#fee2e2';
+                    nonBtn.style.color = '#dc2626';
+                }
+                
+                // Après 5 clics, forcer le Oui
+                if (nonClickCount >= 10) {
+                    triggerYes();
+                }
+            });
+            
+            // Même comportement pour le touch
+            nonBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                explodeNonButton();
+                growOuiButton();
+                nonClickCount++;
+                
                 if (nonClickCount >= 3) {
                     nonBtn.innerHTML = "S'il te plaît 😢";
                     nonBtn.style.backgroundColor = '#fee2e2';
                     nonBtn.style.color = '#dc2626';
                 }
                 
-                // Après 5 clics, forcer le Oui
                 if (nonClickCount >= 5) {
                     triggerYes();
                 }
+            });
+            
+            // Petit effet au survol (au lieu de fuir, il tremble un peu)
+            nonBtn.addEventListener('mouseenter', () => {
+                nonBtn.style.transform = 'scale(1.5)';
+            });
+            
+            nonBtn.addEventListener('mouseleave', () => {
+                nonBtn.style.transform = 'scale(1)';
             });
             
             // Événements pour le bouton Oui
@@ -560,8 +768,9 @@
             musicControl.addEventListener('click', toggleMusic);
             
             // Configurer la musique
-            backgroundMusic.volume = 0.3; // Volume à 30%
+            backgroundMusic.volume = 0.3;
             successSound.volume = 0.5;
+            if (explosionSound) explosionSound.volume = 0.3;
             
             // Adapter au redimensionnement
             window.addEventListener('resize', positionButtons);
@@ -614,7 +823,6 @@
                     }, 3000);
                 }).catch(error => {
                     console.log("Erreur de lecture de la musique :", error);
-                    // Si l'autoplay est bloqué, afficher un message
                     musicNotification.innerHTML = '<span class="note-icon">🎵</span><span>Clique sur le bouton 🔊 pour activer la musique</span>';
                     musicNotification.style.display = 'flex';
                     musicNotification.style.backgroundColor = '#ffeaa7';
@@ -626,7 +834,6 @@
         // Basculer la musique ON/OFF
         function toggleMusic() {
             isMuted = !isMuted;
-            
             if (isMuted) {
                 backgroundMusic.pause();
                 musicControl.textContent = '🔇';
@@ -638,7 +845,7 @@
             }
         }
         
-        // Créer des cœurs flottants
+        // Créer des cœurs flottants (fond)
         function createFloatingHearts() {
             const heartCount = 15;
             const heartColors = ['heart-red', 'heart-pink', 'heart-purple', 'heart-yellow'];
@@ -653,17 +860,13 @@
                     heart.className = `floating-heart ${colorClass}`;
                     heart.textContent = emoji;
                     
-                    // Position aléatoire
                     heart.style.left = `${Math.random() * 100}%`;
                     heart.style.top = `${Math.random() * 100}%`;
-                    
-                    // Animation delay aléatoire
                     heart.style.animationDelay = `${Math.random() * 2}s`;
                     
                     heartsContainer.appendChild(heart);
                     hearts.push(heart);
                     
-                    // Supprimer après 10 secondes et en créer un nouveau
                     setTimeout(() => {
                         if (heart.parentNode) {
                             heart.parentNode.removeChild(heart);
@@ -671,7 +874,7 @@
                             if (index > -1) hearts.splice(index, 1);
                         }
                     }, 10000);
-                }, i * 300); // Créer avec un délai
+                }, i * 300);
             }
         }
         
@@ -687,8 +890,65 @@
             nonBtn.style.top = `calc(50% + 30px)`;
         }
         
-        // Fonction pour déplacer le bouton Non
-        function moveNonButton() {
+        // Fonction pour faire exploser le bouton Non en cœurs !
+        function explodeNonButton() {
+            // Jouer un petit son (optionnel)
+            if (explosionSound) {
+                explosionSound.currentTime = 0;
+                explosionSound.play().catch(() => {});
+            }
+            
+            // Ajouter une classe d'explosion visuelle sur le bouton
+            nonBtn.classList.add('exploding');
+            setTimeout(() => {
+                nonBtn.classList.remove('exploding');
+            }, 400);
+            
+            // Récupérer la position du bouton Non
+            const rect = nonBtn.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            // Créer une pluie de cœurs
+            const heartCount = 20; // Nombre de cœurs
+            const heartEmojis = ['❤️', '💖', '💕', '💗', '💓', '💞', '💝', '🥰', '😍'];
+            
+            for (let i = 0; i < heartCount; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'explosion-heart';
+                    heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                    
+                    // Position de départ : au centre du bouton
+                    heart.style.left = `${centerX}px`;
+                    heart.style.top = `${centerY}px`;
+                    
+                    // Direction aléatoire : entre -200 et 200 pixels
+                    const tx = (Math.random() - 0.5) * 400;
+                    const ty = (Math.random() - 0.5) * 400 - 100; // plutôt vers le haut
+                    
+                    heart.style.setProperty('--tx', `${tx}px`);
+                    heart.style.setProperty('--ty', `${ty}px`);
+                    
+                    // Couleur aléatoire
+                    const colors = ['#ff6b6b', '#ff9ff3', '#a29bfe', '#ffeaa7', '#ff7675', '#fd79a8'];
+                    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    document.body.appendChild(heart);
+                    
+                    // Supprimer après l'animation
+                    setTimeout(() => {
+                        if (heart.parentNode) heart.parentNode.removeChild(heart);
+                    }, 800);
+                }, i * 20); // Légère temporisation pour étaler
+            }
+            
+            // Déplacer le bouton Non à un endroit aléatoire (comme avant, mais après explosion)
+            moveNonButtonToRandomPosition();
+        }
+        
+        // Déplacer le bouton Non à une position aléatoire
+        function moveNonButtonToRandomPosition() {
             const isMobile = window.innerWidth < 768;
             const buttonWidth = isMobile ? 120 : 180;
             const maxX = window.innerWidth - buttonWidth - 20;
@@ -743,7 +1003,7 @@
                 setInterval(() => {
                     if (hearts.length < 20) {
                         const heartColors = ['heart-red', 'heart-pink', 'heart-purple', 'heart-yellow'];
-                        const heartEmojis = ['❤️', '💖', '💕', '💗'];
+                        const heartEmojis = ['❤️', '🌸🌺', '🌹', '🎀','🎁'];
                         
                         const heart = document.createElement('div');
                         const colorClass = heartColors[Math.floor(Math.random() * heartColors.length)];
@@ -792,11 +1052,8 @@
                     
                     document.body.appendChild(confetti);
                     
-                    // Supprimer après l'animation
                     setTimeout(() => {
-                        if (confetti.parentNode) {
-                            confetti.parentNode.removeChild(confetti);
-                        }
+                        if (confetti.parentNode) confetti.parentNode.removeChild(confetti);
                     }, duration * 1000);
                 }, i * 20);
             }
@@ -809,7 +1066,4 @@
         });
     </script>
 </body>
-
 </html>
-
-
