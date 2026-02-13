@@ -726,7 +726,7 @@
                 }
                 
                 // Après 5 clics, forcer le Oui
-                if (nonClickCount >= 20) {
+                if (nonClickCount >= 5) {
                     triggerYes();
                 }
             });
@@ -745,7 +745,7 @@
                     nonBtn.style.color = '#dc2626';
                 }
                 
-                if (nonClickCount >= 5) {
+                if (nonClickCount >= 10) {
                     triggerYes();
                 }
             });
@@ -1067,4 +1067,5 @@
     </script>
 </body>
 </html>
+
 
